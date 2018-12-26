@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
-mongoose.connect(process.env.ad_db, { useNewUrlParser: true })
+mongoose.connect(process.env.ad_db || 'mongodb://localhost/adnetwork', { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
