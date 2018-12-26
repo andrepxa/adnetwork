@@ -1,10 +1,10 @@
-// const campaigns = require('./routes/campaigns'); 
+// const campaigns = require('./routes/campaigns');
 const { Campaign, validate } = require('./models/Campaigns');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
-mongoose.connect('mongodb://localhost/adnetwork', { useNewUrlParser: true })
+mongoose.connect(process.env.ad_db, { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
@@ -32,8 +32,8 @@ app.post('/', (req, res) => {
   });
   campaign.save()
     .then(result => res.render('console', {
-      message: result ? 'success' : 'fail', 
-      campaign: req.body.campaignName 
+      message: result ? 'success' : 'fail',
+      campaign: req.body.campaignName
     }))
     .catch(err => res.status(500).send('Something failed!'));
 });
