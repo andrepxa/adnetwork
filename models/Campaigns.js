@@ -15,7 +15,7 @@ const campaignSchema = new mongoose.Schema({
     default: ['']
   },
   conversionType: {
-    type: String, 
+    type: String,
     required: true,
     lowercase: true
   },

@@ -19,7 +19,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-  console.log(req.body);
+
+  console.log(req.body, typeof req.body.targets);
+
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
