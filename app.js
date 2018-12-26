@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 
-  console.log(req.body, typeof req.body.targets);
+  if (req.body.targets && typeof req.body.targets === 'string') req.body.targets = [req.body.targets];
 
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
